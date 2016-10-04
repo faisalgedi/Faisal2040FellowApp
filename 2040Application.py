@@ -1,11 +1,16 @@
 import json, requests, datetime
 
+############
+# STEP 1
+############
 TOKEN = '9e048c151db34066955043ef2cad3799'
 dict= {'token': TOKEN , 'github' : 'https://github.com/faisalgedi/Faisal2040FellowApp'}
 r0 = requests.post("http://challenge.code2040.org/api/register", json = dict)
 
 
-
+############
+# STEP 2
+############
 dict = {'token': TOKEN}
 inputString = requests.post("http://challenge.code2040.org/api/reverse", dict)
 reversedString = inputString.text[::-1]
@@ -13,7 +18,9 @@ send = {'token' : TOKEN, 'string': reversedString}
 inputString = requests.post("http://challenge.code2040.org/api/reverse/validate",send)
 
 
-
+############
+# STEP 3
+############
 r1 = requests.post("http://challenge.code2040.org/api/haystack", data={'token': TOKEN})
 json = r1.json()
 needle = json['needle']
@@ -22,7 +29,9 @@ index = haystack.index(needle)
 r1 = requests.post("http://challenge.code2040.org/api/haystack/validate", data={'token': TOKEN, 'needle': index})
 
 
-
+############
+# STEP 4
+############
 r2 = requests.post("http://challenge.code2040.org/api/prefix", data={'token': TOKEN})
 newArray = []
 json = r2.json()
@@ -38,7 +47,9 @@ r2 = requests.post("http://challenge.code2040.org/api/prefix/validate", json={'t
 
 
 
-
+############
+# STEP 5
+############
 r3 = requests.post("http://challenge.code2040.org/api/dating", data={'token': TOKEN})
 json = r3.json()
 datestamp = json['datestamp']
